@@ -22,9 +22,18 @@ function verApi() {
 }
 const cogerPreguntas = async () => {
     try {
-     const leerAPI= await axios.get(API_URL) 
-       console.log(leerAPI.data);
-        
+        const response = await axios.get(API_URL)
+        const listaPreguntas = response.data.results
+        console.log(listaPreguntas);
+        const ponerPregunta = () => {
+            listaPreguntas.forEach(pregunta => {
+                preguntaElemento.innerHTML += ` <div>${pregunta.question}</div>`
+                
+            });
+        }
+        ponerPregunta()
+
+
     } catch (error) {
         console.error(error);
     }
