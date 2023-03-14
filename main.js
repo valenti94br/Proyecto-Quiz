@@ -38,5 +38,5 @@ const cogerPreguntasAPI = async () => {
 cogerPreguntasAPI()
 const siguientePregunta = () => {
     // resetState();
-    mostrarPreguntas(Preguntas.question[currentQuestionIndex]);
+    // mostrarPreguntas(Preguntas.question[currentQuestionIndex]);
 }
