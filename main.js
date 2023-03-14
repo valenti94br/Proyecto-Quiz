@@ -7,25 +7,6 @@ const API_URL = 'https://opentdb.com/api.php?amount=10&category=31&difficulty=ea
 const preguntaElemento = document.querySelector('#preguntaElemento')
 const contenedorRespuestas = document.querySelector('#answers-buttons')
 let currentQuestionIndex;
-
-const empezarQuiz = () => {
-    homeContainer.classList.add('hide')
-    currentQuestionIndex = 0;
-    quizContainer.classList.remove('hide')
-    // setNextQuestion()
-
-}
-// btnHome.addEventListener('click', empezarQuiz)
-// quizContainer.innerHTML = '';
-const mostrarPreguntas = (listado) => {
-quizContainer.innerHTML=`<div>${listado.question}</div>`
-    listado.answers.forEach(answer => {
-        
-        // const button = 
-    });
-
-}
-// mostrarPreguntas()
 const cogerPreguntasAPI = async () => {
     try {
         const response = await axios.get(API_URL)
@@ -35,8 +16,31 @@ const cogerPreguntasAPI = async () => {
         console.error(error);
     }
 }
-cogerPreguntasAPI()
+
+const empezarQuiz = (e) => {
+    e.preventDefault()
+    homeContainer.classList.add('hide')
+    currentQuestionIndex = 0;
+    quizContainer.classList.remove('hide')
+    // setNextQuestion()
+
+}
+btnEmpezar.addEventListener('click', empezarQuiz)
+// quizContainer.innerHTML = '';
+const mostrarPreguntas = (listado) => {
+    cogerPreguntasAPI()
+quizContainer.innerText='${listado.question}'
+    // listado.answers.forEach(answer => {
+        
+    //     const button = 
+    // });
+
+}
+mostrarPreguntas()
+
+
+
 const siguientePregunta = () => {
-    // resetState();
-    // mostrarPreguntas(Preguntas.question[currentQuestionIndex]);
+    resetState();
+    mostrarPreguntas(listado.question[currentQuestionIndex]);
 }
