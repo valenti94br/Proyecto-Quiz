@@ -17,20 +17,20 @@ const empezarQuiz = () => {
 }
 // btnHome.addEventListener('click', empezarQuiz)
 // quizContainer.innerHTML = '';
-const mostrarPreguntas = (preguntasDelObjeto) => {
-quizContainer.innerHTML=`<div>${preguntas.question}</div>`
-    preguntasDelObjeto.answers.forEach(answer => {
-        quizContainer.innerHTML += `<div>${pregunta.question}</div>`
+const mostrarPreguntas = (listado) => {
+quizContainer.innerHTML=`<div>${listado.question}</div>`
+    listado.answers.forEach(answer => {
+        
+        // const button = 
     });
 
 }
 // mostrarPreguntas()
-const cogerPreguntas = async () => {
+const cogerPreguntasAPI = async () => {
     try {
         const response = await axios.get(API_URL)
-        const Preguntas = response.data.results
-        mostrarPreguntas(Preguntas)
-        console.log(Preguntas);
+        const listado = response.data.results
+        console.log(listado);
     } catch (error) {
         console.error(error);
     }
