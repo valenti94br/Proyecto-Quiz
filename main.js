@@ -1,5 +1,6 @@
 const homeContainer = document.querySelector('#homeContainer')
-const btnHome = document.querySelector('#btnHome')
+const btnEmpezar = document.querySelector('#btnempezar')
+const btnSiguiente = document.querySelector('#btnsiguiente')
 const quizContainer = document.querySelector('#quizContainer')
 const resultadosContainer = document.querySelector('#resultadosContainer')
 const API_URL = 'https://opentdb.com/api.php?amount=10&category=31&difficulty=easy'
@@ -7,20 +8,19 @@ const preguntaElemento = document.querySelector('#preguntaElemento')
 const contenedorRespuestas = document.querySelector('#answers-buttons')
 let currentQuestionIndex;
 
-const empezarQuiz = (e) => {
-    e.preventDefault()
+const empezarQuiz = () => {
     homeContainer.classList.add('hide')
     currentQuestionIndex = 0;
     quizContainer.classList.remove('hide')
     // setNextQuestion()
 
 }
-btnHome.addEventListener('click', empezarQuiz)
-quizContainer.innerHTML = '';
-const mostrarPreguntas = (Preguntas) => {
-
-    Preguntas.forEach(pregunta => {
-        quizContainer.innerHTML = `<div>${pregunta.question}</div>`
+// btnHome.addEventListener('click', empezarQuiz)
+// quizContainer.innerHTML = '';
+const mostrarPreguntas = (preguntasDelObjeto) => {
+quizContainer.innerHTML=`<div>${preguntas.question}</div>`
+    preguntasDelObjeto.answers.forEach(answer => {
+        quizContainer.innerHTML += `<div>${pregunta.question}</div>`
     });
 
 }
