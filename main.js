@@ -1,54 +1,41 @@
-const homeContainer = document.querySelector('#homeContainer')
-const btnEmpezar = document.querySelector('#btnempezar')
-const btnSiguiente = document.querySelector('#btnsiguiente')
-const quizContainer = document.querySelector('#quizContainer')
-const resultadosContainer = document.querySelector('#resultadosContainer')
-const API_URL = 'https://opentdb.com/api.php?amount=10&category=31&difficulty=easy'
-const preguntaElemento = document.querySelector('#preguntaElemento')
-const contenedorPreguntas = document.querySelector('#preguntaContainer')
-let currentQuestionIndex;
-let preguntas = []
-const cogerPreguntasAPI = async () => {
+const questionContainer = document.querySelector('#question-container')
+console.log(questionContainer);
+const questionText = document.querySelector('#question-text')
+console.log(questionText);
+const optionsContainer = document.querySelector('#options-container')
+console.log(optionsContainer);
+const startBtn = document.querySelector('#start-button')
+console.log(startBtn);
+const nextQuestionBtn = document.querySelector('#next-button')
+console.log(nextQuestionBtn);
+const API_URL = 'https://opentdb.com/api.php?amount=10&type=multiple'
+console.log(API_URL);
+
+let preguntas = [];
+let answers = [];
+let currentQuestion = 0;
+const cogerPreguntasApi = async () => {
     try {
         const response = await axios.get(API_URL)
-        const listado = response.data.results
-        listado.forEach(objeto => {
-            preguntas.push(objeto.question)//array con solo preguntas
-            console.log(preguntas);
+        preguntas = response.data.results
+        console.log(preguntas);
+        preguntas.forEach(pregunta => {
+            const ask = pregunta.question
+            console.log(ask);
+            const answers = [...pregunta.incorrect_answers,pregunta.correct_answer]
+            console.log(answers);
         });
-        console.log(listado);
     } catch (error) {
         console.error(error);
     }
 }
-cogerPreguntasAPI()
-
-
-const empezarQuiz = (e) => {
-    e.preventDefault()
-    homeContainer.classList.add('hide')
-    currentQuestionIndex = 0;
-    quizContainer.classList.remove('hide')
-    // setNextQuestion()
-
-}
-btnEmpezar.addEventListener('click', empezarQuiz)
-// // quizContainer.innerHTML = '';
-// const mostrarPreguntas = (listado) => {
-//     cogerPreguntasAPI()
-// quizContainer.innerText = listado.question
-// console.log(listado.question);
-//     // listado.answers.forEach(answer => {
+cogerPreguntasApi()
+// const muestraPregunta = (pregunta) =>{
+//     preguntas.forEach(pregunta => {
         
-//     //     const button = 
-//     // });
-
-// }
-// mostrarPreguntas()
-
-
-
-// const siguientePregunta = () => {
-//     resetState();
-//     mostrarPreguntas(listado.question[currentQuestionIndex]);
+//         questionContainer.innerHTML=`
+//         <h1>${pregunta.question}</h1><br><br>
+//         <p>${pre}
+//         `
+//     });
 // }
