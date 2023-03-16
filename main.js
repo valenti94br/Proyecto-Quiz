@@ -8,6 +8,9 @@ const startBtn = document.querySelector('#start-button')
 console.log(startBtn);
 const nextQuestionBtn = document.querySelector('#next-button')
 console.log(nextQuestionBtn);
+const scoreContainer = document.querySelector('#score')
+console.log(scoreContainer);
+const btnScore = document.querySelector('#btnScore')
 const API_URL = 'https://opentdb.com/api.php?amount=10&type=multiple'
 console.log(API_URL);
 
@@ -94,8 +97,10 @@ const seleccionarPregunta = () =>{
 
     } else {
         // startBtn.innerText = 'restart'
-        // startBtn.classList.remove('hide')
-        questionContainer.innerText = 'has acabado'
+        btnScore.classList.remove('hide')
+        scoreContainer.innerHTML = '<p>Quieres ver tu puntuacion?</p>'
+        scoreContainer.classList.remove('hide')
+        questionContainer.classList.add('hide')
     }
 }
 function resetState() {
