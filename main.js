@@ -16,6 +16,9 @@ console.log(API_URL);
 
 let preguntasObject = [];
 let currentQuestion=0 ;
+let puntuacion = [];
+//Esto define el Array para ir almacenando la puntuación
+
 const cogerPreguntasApi = async () => {
     try {
         const response = await axios.get(API_URL)
@@ -87,20 +90,26 @@ const siguientePregunta = () => {
     resetState();
     mostrarPregunta(preguntasObject[currentQuestion])
 }
-const seleccionarPregunta = () =>{
-    Array.from(optionsContainer.children).forEach(btn => {
-        setStatusClass(btn)
+const seleccionarPregunta = (e) => {
+    const seleccion = e.target;
+    const correcto = seleccion.dataset.correct;
+    setStatusClass(seleccion);
+    if (correcto) {
+        puntuacion.push(1);
+    }
+    Array.from(optionsContainer.children).forEach((boton) => {
+        setStatusClass(boton);
+        if (boton.dataset.correct) {
+            puntuacion.push(1);
+        }
     });
-    if (preguntasObject.length>currentQuestion + 1) {
-        
-        nextQuestionBtn.classList.remove('hide')
-
+    if (preguntasObject.length > currentQuestion + 1) {
+        nextQuestionBtn.classList.remove('hide');
     } else {
-        // startBtn.innerText = 'restart'
-        btnScore.classList.remove('hide')
-        scoreContainer.innerHTML = '<p>Quieres ver tu puntuacion?</p>'
-        scoreContainer.classList.remove('hide')
-        questionContainer.classList.add('hide')
+        btnScore.classList.remove('hide');
+        scoreContainer.innerHTML = `<p>Tu puntuación final es: ${puntuacion.length} puntos.</p>`;
+        scoreContainer.classList.remove('hide');
+        questionContainer.classList.add('hide');
     }
 }
 function resetState() {
