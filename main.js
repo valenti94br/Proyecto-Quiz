@@ -101,7 +101,7 @@ const seleccionarPregunta = (e) => {
         setStatusClass(boton);
         if (boton.dataset.correct) {
             puntuacion.push(1);
-        }
+        } //Con esto consigo sumar la puntuación pero no sé porqué leches le suma un 10
     });
     if (preguntasObject.length > currentQuestion + 1) {
         nextQuestionBtn.classList.remove('hide');
