@@ -15,7 +15,7 @@ const API_URL = 'https://opentdb.com/api.php?amount=10&type=multiple'
 console.log(API_URL);
 
 let preguntasObject = [];
-let currentQuestion=0 ;
+let currentQuestion = 0;
 let puntuacion = [];
 //Esto define el Array para ir almacenando la puntuación
 
@@ -62,7 +62,7 @@ const empezarQuiz = async (e) => {
     startBtn.classList.add('hide')
     nextQuestionBtn.classList.remove('hide')
     questionContainer.classList.remove('hide')
-   await cogerPreguntasApi(); // Espera a que se resuelva la promesa
+    await cogerPreguntasApi(); // Espera a que se resuelva la promesa
     siguientePregunta(); // Muestra la primera pregunta
 }
 
@@ -81,7 +81,7 @@ const mostrarPregunta = preguntasBloque => {
 }
 function setStatusClass(element) {
     if (element.dataset.correct) {
-      element.classList.add("correct");
+        element.classList.add("correct");
     } else {
         element.classList.add("wrong");
     }
@@ -119,8 +119,33 @@ function resetState() {
     }
 }
 startBtn.addEventListener('click', empezarQuiz);
-nextQuestionBtn.addEventListener('click',()=>{
+nextQuestionBtn.addEventListener('click', () => {
     currentQuestion++;
     siguientePregunta()
 })
 
+const reiniciarQuiz = () => {
+    // Reiniciar variables globales
+    preguntasObject = [];
+    currentQuestion = 0;
+    puntuacion = [];
+
+    // Limpiar elementos del DOM
+    questionText.innerText = "";
+    scoreContainer.innerHTML = "";
+    while (optionsContainer.firstChild) {
+        optionsContainer.removeChild(optionsContainer.firstChild);
+    }
+
+    // Esconder elementos del DOM
+    nextQuestionBtn.classList.add('hide');
+    scoreContainer.classList.add('hide');
+    questionContainer.classList.add('hide');
+    startBtn.classList.remove('hide');
+
+    // Guardar el array de puntuación en el local storage
+    localStorage.setItem('puntuacion', JSON.stringify(puntuacion));
+}
+
+const restartBtn = document.querySelector('#restart-button')
+restartBtn.addEventListener('click', reiniciarQuiz)
