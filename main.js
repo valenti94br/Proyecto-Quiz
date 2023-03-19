@@ -60,10 +60,10 @@ const cogerPreguntasApi = async () => {
 const empezarQuiz = async (e) => {
     e.preventDefault();
     startBtn.classList.add('hide')
-    nextQuestionBtn.classList.remove('hide')
     questionContainer.classList.remove('hide')
     await cogerPreguntasApi(); // Espera a que se resuelva la promesa
     siguientePregunta(); // Muestra la primera pregunta
+    // nextQuestionBtn.classList.remove('hide')
 }
 
 const mostrarPregunta = preguntasBloque => {
@@ -98,18 +98,17 @@ const seleccionarPregunta = (e) => {
         puntuacion.push(1);
     }
     Array.from(optionsContainer.children).forEach((boton) => {
-        setStatusClass(boton);
-        if (boton.dataset.correct) {
-            puntuacion.push(1);
-        } //Con esto consigo sumar la puntuación pero no sé porqué leches le suma un 10
-    });
+        setStatusClass(boton)});
     if (preguntasObject.length > currentQuestion + 1) {
         nextQuestionBtn.classList.remove('hide');
     } else {
-        btnScore.classList.remove('hide');
+        setTimeout(() => {
+        // btnScore.classList.remove('hide');
         scoreContainer.innerHTML = `<p>Tu puntuación final es: ${puntuacion.length} puntos.</p>`;
         scoreContainer.classList.remove('hide');
         questionContainer.classList.add('hide');
+            restartBtn.classList.remove('hide')
+        }, 1500);
     }
 }
 function resetState() {
@@ -125,6 +124,7 @@ nextQuestionBtn.addEventListener('click', () => {
 })
 
 const reiniciarQuiz = () => {
+
     // Reiniciar variables globales
     preguntasObject = [];
     currentQuestion = 0;
@@ -142,7 +142,8 @@ const reiniciarQuiz = () => {
     scoreContainer.classList.add('hide');
     questionContainer.classList.add('hide');
     startBtn.classList.remove('hide');
-
+    restartBtn.classList.add('hide')
+    btnScore.classList.add('hide')
     // Guardar el array de puntuación en el local storage
     localStorage.setItem('puntuacion', JSON.stringify(puntuacion));
 }
