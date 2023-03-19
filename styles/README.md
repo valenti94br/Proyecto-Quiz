@@ -19,7 +19,7 @@ Instalación⚙️
 Para utilizar esta aplicación, simplemente abre el archivo index.html en cualquier navegador web moderno.
 
 
-Licencia:
+Licencia
 Este proyecto está licenciado bajo la Licencia MIT.
 
 Autores👥
