@@ -23,4 +23,5 @@ Licencia:
 Este proyecto está licenciado bajo la Licencia MIT.
 
 Autores👥
-Este proyecto fue creado por Adrían y Valentí.
+Adrían
+Valentí
