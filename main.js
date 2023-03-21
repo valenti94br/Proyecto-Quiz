@@ -10,7 +10,6 @@ const nextQuestionBtn = document.querySelector('#next-button')
 console.log(nextQuestionBtn);
 const scoreContainer = document.querySelector('#score')
 console.log(scoreContainer);
-const btnScore = document.querySelector('#btnScore')
 const API_URL = 'https://opentdb.com/api.php?amount=10&category=31&difficulty=easy&type=multiple'
 console.log(API_URL);
 const imgapro = document.querySelector('#nota')
@@ -60,6 +59,7 @@ const cogerPreguntasApi = async () => {
 // cogerPreguntasApi()
 // console.log(preguntasObject);
 const empezarQuiz = async () => {
+    console.log("ee")
     intro.classList.add('hide')
     startBtn.classList.add('hide')
     questionContainer.classList.remove('hide')
@@ -138,8 +138,9 @@ nextQuestionBtn.addEventListener('click', () => {
     siguientePregunta()
 })
 //para que al darle a siguiente nos sume +1 a currentQuestion y se ejecute la funcion siguiente pregunta
+const restartBtn = document.querySelector('#restart-button')
 const reiniciarQuiz = () => {
-
+console.log("hola")
     // Reiniciar variables globales
     preguntasObject = [];
     currentQuestion = 0;
@@ -157,13 +158,12 @@ const reiniciarQuiz = () => {
     questionContainer.classList.add('hide');
     startBtn.classList.remove('hide');
     restartBtn.classList.add('hide');
-    btnScore.classList.add('hide');
     imgapro.classList.add('hide');
+    intro.classList.remove('hide')
     // Guardar el array de puntuación en el local storage(lo comento valenti que no lo hace)
     // localStorage.setItem('puntuacion', JSON.stringify(puntuacion));
 }
 
-const restartBtn = document.querySelector('#restart-button')
 restartBtn.addEventListener('click', reiniciarQuiz)
 
 
