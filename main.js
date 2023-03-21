@@ -106,7 +106,6 @@ const seleccionarPregunta = e => {
     Array.from(optionsContainer.children).forEach((boton) => {
         setStatusClass(boton)
     });
-    //lo de arriba para valenti que no lo entiendo bien
     //esta parte de abajo es para que siga mostrando el boton de siguiente pregunta si es mayor la cantidad total de preguntas que la pregunta actual mas 1 y si no pues eso y puse un temporizador para que no se ejecutase rapido y diera tiempo a ver la ultima pregunta un poco
     if (preguntasObject.length > currentQuestion + 1) {
         nextQuestionBtn.classList.remove('hide');
