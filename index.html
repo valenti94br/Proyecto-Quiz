@@ -16,31 +16,32 @@
 <body>
     <header>
 
+        <h1 class="d-flex justify-content-center">Quiz</h1>
     </header>
 
-    <h1>Quiz</h1>
-
+<hr>
     <br>
     <br>
-    <br>
+   <div  id="intro"><span class="d-flex justify-content-center">¿Quieres jugar a nuestro Quiz de 10 preguntas sobre anime y manga?</span></div>
 
     <div id="question-container" class="hide container text-center">
         <div id="question-text"></div>
         <div id="options-container"></div>
     </div>
 
-    <div class="align-self-center d-grid gap-2 col-6 mx-auto">
+    <div class="align-self-center d-grid gap-2 col-2 mx-auto">
         <button id="start-button">Empezar</button>
         <button id="next-button" class="hide">Siguiente</button>
     </div>
 
     <div id="score" class="hide container text-center">
     </div>
+    <div id="nota" class="hide d-flex justify-content-center">
+    </div>
 
-    <!-- <button id="btnScore" class="hide">puntuacion</button> -->
 
-    <div class="d-grid gap-2 col-6 mx-auto">
-    <button id="restart-button" class="hide">Volver a jugar</button>
+    <div class="d-grid gap-2 col-2 mx-auto">
+    <button id="restart-button" class="hide">¿Volver a jugar?</button>
 </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

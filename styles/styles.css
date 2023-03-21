@@ -2,9 +2,20 @@
     display: none;
 }
 .correct {
-    background-color: rgb(0, 255, 72);
+    background-color: rgb(28, 154, 64);
   }
   
   .wrong {
     background-color: rgb(255, 0, 0);
+  }
+  .btnresp{
+    margin: 10px;
+  }
+  img{
+    width: 200px;
+    height: 400px;
+    margin: 30px;
+  }
+  #intro{
+    margin: 20px;
   }
